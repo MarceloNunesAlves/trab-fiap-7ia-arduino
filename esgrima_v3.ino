@@ -175,19 +175,22 @@ void epee() {
    }
 
    // Arma - A
-   //  no hit for A yet    && weapon depress    && opponent lame touched
+   //  Se o esgrimista A ainda não marcou o timeout do toque (intervalo de verificação do toque simultâneo)
    if (hitOnTargA == false) {
+      // Verifica se o valor da arma e o retorno estão dentro desse range
       if (400 < weaponA && weaponA < 600 && 400 < lameA && lameA < 600) {
+         //Marcar o momento do inicio do toque
          if (!depressedA) {
             depressAtime = micros();
             depressedA   = true;
          } else {
+            // Após o intervalo de verificação do toque simultâneo acender as luzes
             if (depressAtime + depress[1] <= micros()) {
                hitOnTargA = true;
             }
          }
       } else {
-         // Zero os valores após passar o tempo
+         // Zero os valores sem não houve toque
          if (depressedA == true) {
             depressAtime = 0;
             depressedA   = 0;
@@ -196,19 +199,22 @@ void epee() {
    }
 
    // Arma - B
-   //  no hit for B yet    && weapon depress    && opponent lame touched
+   //  Se o esgrimista B ainda não marcou o timeout do toque (intervalo de verificação do toque simultâneo)
    if (hitOnTargB == false) {
+      // Verifica se o valor da arma e o retorno estão dentro desse range
       if (400 < weaponB && weaponB < 600 && 400 < lameB && lameB < 600) {
+        //Marcar o momento do inicio do toque
          if (!depressedB) {
             depressBtime = micros();
             depressedB   = true;
          } else {
+            // Após o intervalo de verificação do toque simultâneo acender as luzes
             if (depressBtime + depress[1] <= micros()) {
                hitOnTargB = true;
             }
          }
       } else {
-         // Zero os valores após passar o tempo
+         // Zero os valores sem não houve toque
          if (depressedB == true) {
             depressBtime = 0;
             depressedB   = 0;
